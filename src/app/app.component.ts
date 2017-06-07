@@ -19,7 +19,7 @@ export class AppComponent {
 heroes = HEROES;
 selectedHero: Hero;
 onSelect(hero: Hero): void {
-  console.log("Click")
+  console.log("CLick")
   this.selectedHero = hero;
 }
 }
