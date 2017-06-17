@@ -7,6 +7,7 @@ import { AppComponent } from './app.component';
 import { HeroesComponent } from './heroes.component';
 import { DashboardComponent } from './dashboard.component';
 import { RouterModule }   from '@angular/router';
+import { HeroService } from './hero.service';
 
 @NgModule({
   declarations: [
@@ -32,10 +33,14 @@ import { RouterModule }   from '@angular/router';
   path: '',
   redirectTo: '/dashboard',
   pathMatch: 'full'
+},
+{
+  path: 'detail/:id',
+  component: HeroDetailComponent
 }
     ])
   ],
-  providers: [],
+  providers: [HeroService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
