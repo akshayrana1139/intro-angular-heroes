@@ -3,6 +3,7 @@ import { Hero } from './hero';
 import { HEROES } from './mock-heroes';
 import { HeroService } from './hero.service';
 import { OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -12,7 +13,10 @@ import { OnInit } from '@angular/core';
   providers : [HeroService] 
 })
 export class HeroesComponent implements OnInit{
-  constructor(private heroService : HeroService){}
+  constructor(
+    private router: Router,
+    private heroService: HeroService) { }
+
   hero: Hero = {
   id: 1,
   name: 'Windstorm'
@@ -26,13 +30,16 @@ onSelect(hero: Hero): void {
 
 
 getHeroes():void{
-  this.heroes = this.heroService.getHeroes();
+  this.heroService.getHeroes().then(heroes =>this.heroes = heroes);
 }
 
 ngOnInit(): void {
     this.getHeroes();
   }
 
+gotoDetail(): void {
+  this.router.navigate(['/detail', this.selectedHero.id]);
+}
 
 }
 
