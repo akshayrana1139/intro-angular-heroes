@@ -14,3 +14,11 @@
   </h2>
   <button (click)="gotoDetail()">View Details</button>
 </div>
+
+<div>
+  <label>Hero name:</label> <input #heroName />
+  <!--Call add and then empty the textfield -->
+  <button (click)="add(heroName.value); heroName.value=''">
+    Add
+  </button>
+</div>
