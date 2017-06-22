@@ -48,6 +48,10 @@ add(name:String) : void{
   this.selectedHero = null;
 }
 
+delete(hero:Hero) : void {
+  this.heroService.delete(hero.id).then(()=>this.heroes = this.heroes.filter(h=> h !== hero))
+  
+}
 
 }
 

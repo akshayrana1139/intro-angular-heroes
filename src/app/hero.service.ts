@@ -53,4 +53,10 @@ export class HeroService {
     return this.http.post(this.heroesUrl, JSON.stringify({ "name": name }), this.headers).toPromise().then(r => r.json().data as Hero).catch(this.handleError);
 
   }
+
+  delete(id:number):Promise<void>{
+    const url = `${this.heroesUrl}/${id}`;
+    return this.http.delete(url, this.headers).toPromise().then(()=>null)
+
+  }
 }
