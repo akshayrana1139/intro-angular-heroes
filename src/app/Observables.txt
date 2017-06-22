@@ -1,0 +1,23 @@
+Http Methods () ==> return Observables<Response> ==> which are then further converted to Promise using toPromise()
+
+Reasons for Observables : 
+-----------------------------
+
+The calling component can easily consume a single result in the form of a Promise. But if in case of multiple request like
+request-cancel-new-request sequence is difficult to implement with Promise so we use Observables.
+
+So to make repeated requests to the server, we make a search feature in Heroes.
+
+ RxJS operator chaining makes response processing easy and readable using map function 
+
+
+Passing every user keystroke directly to the HeroSearchService would create an excessive amount of HTTP requests, taxing server resources and burning through the cellular network data plan.
+Instead, you can chain Observable operators that reduce the request flow to the string Observable. You'll make fewer calls to the HeroSearchService and still get timely results
+
+So better add all the results in Observables and call the service after some delay and duplicate check.
+switchMap() preserves the original request order while returning only the observable from the most recent http method call. Results from prior calls are canceled and discarded.
+
+If the search text is empty, the http() method call is also short circuited and an observable containing an empty array is returned.
+
+Note that until the service supports that feature, canceling the HeroSearchService Observable doesn't actually abort a pending HTTP request. 
+For now, unwanted results are discarded.
