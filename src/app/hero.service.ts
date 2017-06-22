@@ -8,6 +8,7 @@ import 'rxjs/add/operator/toPromise';
 
 export class HeroService {
   
+private headers = new Headers({'Content-Type':'application/json'})
 private heroesUrl = 'api/heroes';  // URL to web api [create using Express/Flask]
 private http : Http
 
@@ -40,5 +41,11 @@ private handleError(error: any): Promise<any> {
   getHeroHttp(id:number): Promise<Hero>{
   const url = "${heroesUrl}/${id}"
   return this.http.get(url).toPromise().then(r => r.json().data as Hero).catch(this.handleError)  
-  }
+}
+
+update(hero : Hero):Promise<Hero>{
+    const url = `${this.heroesUrl}/${hero.id}`;
+    return this.http.put(url, JSON.stringify(hero), this.headers).toPromise().then(()=>hero).catch(this.handleError)
+
+}
 }
