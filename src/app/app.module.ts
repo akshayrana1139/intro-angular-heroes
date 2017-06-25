@@ -11,8 +11,8 @@ import { HeroService } from './hero.service';
 import { AppRoutingModule }     from './app-routing.module';
 import { HeroSearchComponent } from './hero-search.component';
 // Imports for loading & configuring the in-memory web api
-// import { InMemoryWebApiModule } from 'angular-in-memory-web-api';
-// import { InMemoryDataService }  from './in-memory-data.service';
+import { InMemoryWebApiModule } from 'angular-in-memory-web-api';
+import { InMemoryDataService }  from './in-memory-data.service';
 
 
 @NgModule({
